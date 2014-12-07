@@ -1,68 +1,69 @@
 package locator.localizadormq;
 
-import android.graphics.Color;
-import android.graphics.Paint;
+
+import android.content.Context;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.mapquest.android.maps.BoundingBox;
 import com.mapquest.android.maps.GeoPoint;
-import com.mapquest.android.maps.MapView;
-import com.mapquest.android.maps.RectangleOverlay;
 
 public class EnrichedMap extends BasicMap {
 
 	private float rotation = 0f;
+	private static Context mContext;
 	   
     @Override
-    protected void init() {
-        //setupMapView(new GeoPoint(39.9,-104.83), 10);
+    protected void init() 
+    {
         setupMapView(new GeoPoint(-30.068334,-51.120298), 18);
         
         RelativeLayout container = (RelativeLayout)findViewById(R.id.container);
         
-        // add a button to rotate the map
         Button button = new Button(this);
         button.setText("RotateMap");
-        button.setOnClickListener(new View.OnClickListener() {			
-			@Override
-			public void onClick(View v) {
-				rotation = rotation + 45.f;
-				map.getController().setMapRotation(rotation);
-				
-			}
-		});
+        button.setOnClickListener(
+        		new View.OnClickListener() 
+        		{			
+        			@Override
+        			public void onClick(View v) 
+        			{
+        				rotation = rotation + 45.f;
+						map.getController().setMapRotation(rotation);
+        			}
+        		}
+        );
         container.addView(button);
         final Button button2 = (Button) findViewById(R.id.button2);
-        button2.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-          	  Toast.makeText(getApplicationContext(), "Button Pressed!", Toast.LENGTH_SHORT).show();
-            }
-        });
+        button2.setOnClickListener(
+        		new View.OnClickListener() 
+        		{
+        				public void onClick(View v) 
+        				{
+        					Toast.makeText(getApplicationContext(), "Button Pressed!", Toast.LENGTH_SHORT).show();
+        				}
+        		}
+        );
       
- 
-        showRectangleOverlay();
+        mContext = getApplicationContext();
+        Room.init();
+        /*Room bigRoom = new Room("Sala1",Room.predio1Lat,Room.predio1Lng,this.map);
+        Room bigRoom2 = new Room("Sala2",Room.predio1Lat+Room.salaTopStepLat,Room.predio1Lng+Room.salaTopStepLng,this.map);
+        Room bigRoom3 = new Room("Sala2",Room.predio1Lat+Room.salaTopStepLat+Room.salaSideStepLat,Room.predio1Lng+Room.salaTopStepLng+Room.salaSideStepLng,this.map);
+        Room bigRoom4 = new Room("Sala2",Room.predio1Lat+Room.salaSideStepLat,Room.predio1Lng+Room.salaSideStepLng,this.map);
+        */
+        
+        Room roomArray[] = new Room[14] ;
+        for(int i=0;i<7;i++)
+        {
+        	roomArray[i*2] = new Room("SalaEsperta",0,0,i,this.map);
+        	roomArray[i*2+1] = new Room("SalaEsperta",0,1,i,this.map);
+        }
+        
     }
 
-		private void showRectangleOverlay() {
-	        Paint paint = new Paint();
-	        paint.setColor(Color.RED);
-	        paint.setAlpha(50);
-	        paint.setAntiAlias(true);
-	        paint.setStyle(Paint.Style.FILL);
-	        
-	        BoundingBox boundingBox = new BoundingBox(new GeoPoint(-30.068,-51.120), new GeoPoint(-30.069,-51.121
-	        		));
-			RectangleOverlay rect = new RectangleOverlay(boundingBox, paint);
-			rect.setTapListener(new RectangleOverlay.OverlayTapListener() {			
-				@Override
-				public void onTap(GeoPoint p, MapView mapView) {
-					Toast.makeText(getApplicationContext(), "Rectangle Tapped!", Toast.LENGTH_SHORT).show();				
-				}
-			});
-			this.map.getOverlays().add(rect);
-			this.map.invalidate();
-		}
+	    public static Context getContext() {
+	        return mContext;
+	    }
 }
