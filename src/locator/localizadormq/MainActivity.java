@@ -16,8 +16,7 @@ public class MainActivity extends Activity {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_main);
 
-      
-      
+      load();
       final Intent intent = new Intent(this, EnrichedMap.class);
       
       final Button button = (Button) findViewById(R.id.button1);
@@ -28,5 +27,24 @@ public class MainActivity extends Activity {
           }
       });
     }
+	
+	private void load()
+	{
+	      Room roomArray[] = new Room[14] ;
+	      for(int i=0;i<7;i++)
+	      {
+		      	roomArray[i*2] = new Room("SalaEsperta",0,0,i,30);
+		      	roomArray[i*2+1] = new Room("SalaEsperta",0,1,i,30);
+	      }
+	      User.mainUser = new User("Nicolas","12345");
+	      //Event specialEvent = new Event(3,"2014-12-25 14:00:00");
+	      Event eventArray[] = new Event[12] ;
+	      for(int i=0;i<12;i++)
+	      {
+		      	eventArray[i] = new Event(i%14,"2014-"+(i+1)+"-25 14:00:00");
+		      	User.mainUser.addEvent(eventArray[i]);
+	      }
+	      
+	}
   
 }

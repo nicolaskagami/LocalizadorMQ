@@ -8,6 +8,16 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="locator.localizadormq.MainActivity" >
 
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/editText1"
+        android:layout_marginRight="21dp"
+        android:layout_marginTop="138dp"
+        android:text="Login" />
+
     <EditText
         android:id="@+id/editText1"
         android:layout_width="wrap_content"
@@ -27,7 +37,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/editText1"
-        android:layout_alignRight="@+id/button1"
         android:layout_centerVertical="true"
         android:ems="10"
         android:inputType="textPassword" />
@@ -38,7 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/editText1"
         android:layout_alignLeft="@+id/editText1"
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="47dp"
         android:text="Username" />
 
     <TextView
@@ -48,14 +57,5 @@
         android:layout_above="@+id/editText2"
         android:layout_alignRight="@+id/textView1"
         android:text="Password" />
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/editText1"
-        android:layout_below="@+id/editText2"
-        android:layout_marginTop="34dp"
-        android:text="Login" />
 
 </RelativeLayout>
