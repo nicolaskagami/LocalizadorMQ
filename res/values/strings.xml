@@ -10,22 +10,23 @@
     <string name="befriend">Befriend</string>
     <string name="username">Username</string>
     <string name="showGroups">Show Groups</string>
+    
+    
+    <string name="profileImageText">Avatar</string>
+    <string name="subscribeText">Subscribed</string>
+    
+    <string name="eventButton">Button</string>
+    <string name="eventDuration">Duration</string>
+    <string name="eventDate">Date</string>
     <string name="eventName">Event</string>
     <string name="api_key"></string>
-
-    <string-array name="nav_drawer_items">
-        <item >Home</item>
-        <item >Find People</item>
-        <item >Find Groups</item>
-        <item >Find Rooms</item>
-    </string-array>
     
      <string-array name="time_interval_array">
         <item>Next Class</item>
         <item>Today</item>
         <item>This Week</item>
         <item>This Month</item>
-        <item>This Semester</item>
+        <item>This Year</item>
     </string-array>
     
 </resources>
