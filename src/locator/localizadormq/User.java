@@ -19,10 +19,20 @@ public class User {
 		username = name;
 		password = pass;
 		events = new ArrayList<Event>();
+		groups = new ArrayList<Group>();
+		friends = new ArrayList<User>();
 	}
 	public void addEvent(Event e)
 	{
 		events.add(e);
+	}
+	public void addFriend(User u)
+	{
+		friends.add(u);
+	}
+	public void addGroup(Group g)
+	{
+		groups.add(g);
 	}
 	public void selectiveShow(Date startDate, Date endDate, MapView map)
 	{

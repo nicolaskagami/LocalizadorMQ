@@ -96,7 +96,7 @@ public class EnrichedMap extends BasicMap
             		case 0:
             			;
             	}
-            	//User.mainUser.selectiveShow(startDate, endDate, map);
+            	User.mainUser.selectiveShow(startDate, endDate, map);
                 //User.mainUser.selectiveShow(,this.map)
             }
             public void onNothingSelected(AdapterView<?> parent) {
